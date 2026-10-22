@@ -1,16 +1,20 @@
 name: API Monitor Shift-Right
+
 on:
   schedule:
     - cron: '0 * * * *'
   workflow_dispatch:
+
 jobs:
   monitor:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
       - name: Run Health Check
         uses: matt-ball/newman-action@master
         with:
-          collection: "LAB05_Khang_2474802010173.postman_collection.json"
-          environment: "Lab05_Khang_2474802010173_GoRest.postman_environment.json"
+          collection: '*.postman_collection.json'
+          environment: '*.postman_environment.json'
+          reporters: cli
