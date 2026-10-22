@@ -18,16 +18,7 @@
               "script": {
                 "type": "text/javascript",
                 "exec": [
-                  "pm.test(\"Status code is 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\nvar jsonData = pm.response.json();\r\npm.environment.set(\"userId\", jsonData.id);\r\npm.collectionVariables.set(\"userId\", jsonData.id);"
-                ]
-              }
-            },
-            {
-              "listen": "prerequest",
-              "script": {
-                "type": "text/javascript",
-                "exec": [
-                  "pm.test(\"Status code is 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\nvar jsonData = pm.response.json();\r\npm.environment.set(\"userId\", jsonData.id);\r\npm.collectionVariables.set(\"userId\", jsonData.id);"
+                  "pm.test(\"Status code is 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\nif (pm.response.code === 201) {\r\n    var jsonData = pm.response.json();\r\n    pm.environment.set(\"userId\", jsonData.id);\r\n    pm.collectionVariables.set(\"userId\", jsonData.id);\r\n}"
                 ]
               }
             }
@@ -267,7 +258,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"Trung Lap\",\r\n    \"gender\": \"male\",\r\n    \"email\": \"khang.phu.test888@example.com\",\r\n    \"status\": \"active\"\r\n}",
+              "raw": "{\n    \"name\": \"Phu Minh Khang\",\n    \"gender\": \"male\",\n    \"email\": \"khang_{{$randomInt}}@example.com\",\n    \"status\": \"active\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
